@@ -15,7 +15,7 @@ function Flashcard( { flashcard } ) {
                 })}
             </div>
         </div>
-            {flip? flashcard.answer : flashcard.question}
+        <div className="back">{flashcard.answer}</div>
         </div> 
     )
 }
