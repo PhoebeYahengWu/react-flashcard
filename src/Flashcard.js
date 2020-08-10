@@ -1,9 +1,9 @@
 import React from 'react'
 
-function Flashcard() {
+function Flashcard( { flashcard } ) {
     return (
         <div>
-            
+            {flashcard.question}
         </div>
     )
 }
