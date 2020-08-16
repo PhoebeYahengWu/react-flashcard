@@ -10,6 +10,10 @@ export default function Flashcard({ flashcard }) {
         setHeight(Math.max(frontHeight, backHeight, 100));
     }
     useEffect(setMaxHeight, [flashcard.question, flashcard.answer, flashcard.options])
+    useEffect(() => {
+        window.addEventListener('resize', setMaxHeight)
+        return () => window.removeEventListener('resize', setMaxHeight)
+    },[]) 
     return (
         <div className={`card ${flip ? 'flip' : ''}`}
         style={{ height: height }}
@@ -19,7 +23,7 @@ export default function Flashcard({ flashcard }) {
             {flashcard.question}
             <div className="flashcard-options">
                 {flashcard.options.map(option => {
-                    return <div className="flashcard-option">
+                    return <div className="flashcard-option" key={option}>
                     {option}</div>
                 })}
             </div>
